@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Service
 @AllArgsConstructor
@@ -21,5 +22,6 @@ public class NBPService {
     public CurrencyDTOTableC getMaximumAndMinimumForSingleCurrencyAndGivenAmountOfQuotations(String codeC,double quotationNumber){
         return nbpClient.getMaximumAndMinimumForSingleCurrencyAndGivenAmountOfQuotations(codeC, quotationNumber);
     }
+
 
 }
