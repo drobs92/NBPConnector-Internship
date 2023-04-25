@@ -1,6 +1,7 @@
 package com.example.nbpconnectorinternship.controller;
 
 import com.example.nbpconnectorinternship.model.CurrencyDTO;
+import com.example.nbpconnectorinternship.model.CurrencyDTOTableC;
 import com.example.nbpconnectorinternship.service.NBPService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -35,4 +36,17 @@ public class NBPController {
         model.addAttribute("message", e.getStatusText());
         return "exceptions/error";
     }
-}
+
+    @GetMapping("/MaxMinAvg")
+    public String getqueryPageForSecondTask() {
+        return "MaxMinAvg";
+    }
+
+    @GetMapping("/MaxMinAvg/")
+    public String getMaxMinAvgCurrencyByQuotations(Model model, String codeC, double quotationNumber) {
+        CurrencyDTOTableC currencyDTOTableC = nbpService.getMaximumAndMinimumForSingleCurrencyAndGivenAmountOfQuotations(codeC, quotationNumber);
+            model.addAttribute("currencyC", currencyDTOTableC);
+            return "result_pages/second-task";
+
+        }
+    }

@@ -1,12 +1,14 @@
 package com.example.nbpconnectorinternship.webclient;
 
 import com.example.nbpconnectorinternship.model.CurrencyDTO;
+import com.example.nbpconnectorinternship.model.CurrencyDTOTableC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 
 import static com.example.nbpconnectorinternship.utils.UriUtils.TABLE_A_URL;
+import static com.example.nbpconnectorinternship.utils.UriUtils.TABLE_C_URL;
 
 
 @Component
@@ -16,5 +18,8 @@ public class NBPClient {
 
     public CurrencyDTO getAverageForSingleCurrencyOnGivenDay(String code, LocalDate date) {
         return restTemplate.getForObject( TABLE_A_URL + "{code}" + "/" + "{date}", CurrencyDTO.class, code, date);
+    }
+    public CurrencyDTOTableC getMaximumAndMinimumForSingleCurrencyAndGivenAmountOfQuotations(String codeC,double quotationNumber){
+        return restTemplate.getForObject(TABLE_C_URL + "{codeC}" + "/last" + "{quotationNumber}" + "?format=json" , CurrencyDTOTableC.class, codeC,quotationNumber);
     }
 }
