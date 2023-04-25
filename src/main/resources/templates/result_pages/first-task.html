@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3 th:text="${currency.table}"></h3>
+<h3 th:text="${currency.currency}"></h3>
+<h3 th:text="${currency.code}"></h3>
+<div th:each="rates : ${currency.rates}">
+  <h3 th:text="${rates.no}"></h3>
+  <h3 th:text="${rates.effectiveDate}"></h3>
+  <h3 th:text="${rates.mid}"></h3>
+</div>
+</body>
+</html>
